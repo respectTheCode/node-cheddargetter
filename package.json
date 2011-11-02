@@ -1,0 +1,8 @@
+{
+	"name": "cheddargetter",
+	"version": "0.0.1",
+	"dependencies": {
+		"xml2js": "0.1.x",
+		"qs": "0.3.x"
+	}
+}

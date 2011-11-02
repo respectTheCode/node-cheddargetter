@@ -1,0 +1,8 @@
+node_modules
+.settings.xml
+config.conf
+public/stylesheets/*.css
+*.gz
+npm-debug.log
+*.swp
+*~
