@@ -49,9 +49,13 @@ module.exports.Customers = function (test) {
 			email: "test@test.com",
 			subscription: {
 				planCode: config.planCode,
-				method: "paypal",
-				returnUrl:"http://google.com",
-				cancelUrl: "http://google.com"
+				method: "cc",
+				ccNumber: "4111111111111111",
+				ccExpiration: "12/2012",
+				ccCardCode: "123",
+				ccFirstName: "FName",
+				ccLastName:"LName",
+				ccZip: "95123"
 			}
 		}, cb);
 	}, function (result, cb) {
@@ -62,7 +66,6 @@ module.exports.Customers = function (test) {
 		cg.getCustomer(result.customer["@"].code || result.customer[0]["@"].code, cb);
 	}, function (result, cb) {
 		test.equal(typeof(result.customer), "object", "getCustomer should return a customer object");
-
 		cg.deleteCustomer("test", cb);
 	}], function (err) {
 		test.ifError(err);
