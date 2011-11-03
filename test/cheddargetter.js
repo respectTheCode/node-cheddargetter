@@ -63,7 +63,7 @@ module.exports.Customers = function (test) {
 	}, function (result, cb) {
 		test.equal(typeof(result.customer), "object", "getCustomer should return a customer object");
 
-		cb();
+		cg.deleteCustomer("test", cb);
 	}], function (err) {
 		test.ifError(err);
 		test.done();
