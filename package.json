@@ -1,10 +1,14 @@
 {
 	"name": "cheddargetter",
 	"version": "0.0.1",
+	"author": "Kevin Smith",
+	"description": "Wrapper for the CheddarGetter recurring billing system APIs",
 	"dependencies": {
 		"async": ">=0.1.x",
 		"xml2js": "0.1.x",
 		"qs": "0.3.x",
 		"nodeunit": "0.6.x"
 	}
+	"engines": ["node >= 0.4.10"],
+	"main": "lib/cheddargetter"
 }
