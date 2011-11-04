@@ -1,3 +1,7 @@
+# Install
+
+	npm install cheddargetter
+
 # Usage
 
 	var CheddarGetter = require("CheddarGetter");
