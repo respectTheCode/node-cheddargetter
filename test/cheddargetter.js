@@ -80,22 +80,37 @@ module.exports.Items = function (test) {
 	async.waterfall([function (cb) {
 		cg.setItemQuantity("test", config.itemCode, 5, cb);
 	}, function (result, cb) {
+		cg.getCustomer("test", cb);
+	}, function (result, cb) {
+		test.equal(parseInt(result.customer.subscriptions.subscription.items.item[0].quantity, 10), 5);
+		cb(null, {});
+	}, function (result, cb) {
 		cg.addItem("test", config.itemCode, 2, cb);
+	}, function (result, cb) {
+		cg.getCustomer("test", cb);
+	}, function (result, cb) {
+		test.equal(parseInt(result.customer.subscriptions.subscription.items.item[0].quantity, 10), 5 + 2);
+		cb(null, {});
 	}, function (result, cb) {
 		cg.addItem("test", config.itemCode, cb);
 	}, function (result, cb) {
 		cg.getCustomer("test", cb);
 	}, function (result, cb) {
-		test.equal(result.customer.subscriptions.subscription.items.item[0].quantity, "7");
+		test.equal(parseInt(result.customer.subscriptions.subscription.items.item[0].quantity, 10), 5 + 2 + 1);
 		cb(null, {});
 	}, function (result, cb) {
 		cg.removeItem("test", config.itemCode, 2, cb);
+	}, function (result, cb) {
+		cg.getCustomer("test", cb);
+	}, function (result, cb) {
+		test.equal(parseInt(result.customer.subscriptions.subscription.items.item[0].quantity, 10), 5 + 2 + 1 - 2);
+		cb(null, {});
 	}, function (result, cb) {
 		cg.removeItem("test", config.itemCode, cb);
 	}, function (result, cb) {
 		cg.getCustomer("test", cb);
 	}, function (result, cb) {
-		test.equal(result.customer.subscriptions.subscription.items.item[0].quantity, "5");
+		test.equal(parseInt(result.customer.subscriptions.subscription.items.item[0].quantity, 10), 5 + 2 + 1 - 2 - 1);
 		cb(null, {});
 	}, function (result, cb) {
 		cg.deleteCustomer("test", cb);
