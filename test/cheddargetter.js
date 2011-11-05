@@ -66,6 +66,38 @@ module.exports.Customers = function (test) {
 		cg.getCustomer(result.customer["@"].code || result.customer[0]["@"].code, cb);
 	}, function (result, cb) {
 		test.equal(typeof(result.customer), "object", "getCustomer should return a customer object");
+		//cg.deleteCustomer("test", cb);
+		cb();
+	}], function (err) {
+		test.ifError(err);
+		test.done();
+	});
+};
+
+module.exports.Items = function (test) {
+	var cg = new CheddarGetter(config.user, config.pass, config.productCode);
+
+	async.waterfall([function (cb) {
+		cg.setItemQuantity("test", config.itemCode, 5, cb);
+	}, function (result, cb) {
+		cg.addItem("test", config.itemCode, 2, cb);
+	}, function (result, cb) {
+		cg.addItem("test", config.itemCode, cb);
+	}, function (result, cb) {
+		cg.getCustomer("test", cb);
+	}, function (result, cb) {
+		test.equal(result.customer.subscriptions.subscription.items.item[0].quantity, "7");
+		cb(null, {});
+	}, function (result, cb) {
+		cg.removeItem("test", config.itemCode, 2, cb);
+	}, function (result, cb) {
+		cg.removeItem("test", config.itemCode, cb);
+	}, function (result, cb) {
+		cg.getCustomer("test", cb);
+	}, function (result, cb) {
+		test.equal(result.customer.subscriptions.subscription.items.item[0].quantity, "5");
+		cb(null, {});
+	}, function (result, cb) {
 		cg.deleteCustomer("test", cb);
 	}], function (err) {
 		test.ifError(err);
