@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/respectTheCode/node-cheddargetter.png)](http://travis-ci.org/respectTheCode/node-cheddargetter)
 # Goals and Status
 
 This module will simplify the process of integrating CheddarGetter into your existing node.js apps.
