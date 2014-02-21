@@ -1,6 +1,6 @@
 {
 	"name": "cheddargetter",
-	"version": "0.1.4-1",
+	"version": "0.1.5",
 	"author": "Kevin Smith",
 	"repository": {
 		"type": "git",
@@ -11,7 +11,7 @@
 	"dependencies": {
 		"async": "0.1.x",
 		"xml2js": "0.1.x",
-		"qs": "0.3.x"
+		"qs": "0.6.x"
 	},
 	"devDependencies": {
 		"nodeunit": "0.6.x"
